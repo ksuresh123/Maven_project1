@@ -25,3 +25,7 @@ node {
 docker.withRegistry('', 'jenkins-docker1') {
 sh "docker login -u ${USERNAME} -p ${PASSWORD}"
  } 
+  }
+ }
+  
+}
