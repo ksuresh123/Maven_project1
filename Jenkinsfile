@@ -1,8 +1,18 @@
 node {
-stage 'checkout'
-git url: 'https://github.com/ksuresh123/Maven_project1.git'
+  env.JAVA_HOME=" /usr/lib/jvm/java-8-oracle/ "
+  env.M2_HOME="/usr/share/maven"
+	env.PATH="${env.JAVA_HOME}/bin:${env.M2_HOME}/bin:${env.PATH}"
 
-stage 'build'
-def mvnhome = tool 'Maven3'
-sh "${mvnhome}/bin/mvn clean package"
+  stage('SCM clone'){
+  git url: 'https://github.com/ksuresh123/Maven_project1.git'
+                    }
+  stage('Copying'){
+  dir('/var/lib/jenkins/workspace/project2') {
+  sh 'java -version'
+  
+  sh 'mvn --version'
+  sh 'mvn clean install'
+
+ }
 }
+} 
