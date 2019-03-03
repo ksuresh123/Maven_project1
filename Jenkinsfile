@@ -16,7 +16,7 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t image3 .'      
+  sh 'docker build -t suresh123456/image6:${BUILD_NUMBER}-${BUILD_TIMESTAMP} .'      
     
   }
   stage('Login'){
@@ -27,6 +27,9 @@ docker.withRegistry('', 'jenkins-docker1') {
 }
   }
   }
-
+  stage('Pushing'){
+   sh 'docker push suresh123456/image6:${BUILD_NUMBER}-${BUILD_TIMESTAMP}' 
+    
+  }
   
  } 
