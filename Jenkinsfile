@@ -16,16 +16,18 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t suresh123456/image8:3 .'      
+  sh 'docker build -t suresh123456/image8:5 .'      
     
   }
  stage('Login'){
   withCredentials([usernamePassword( credentialsId: 'jenkins-docker1', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 
 docker.withRegistry('', 'jenkins-docker1') {
-sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+sh "docker login -u ${USERNAME} -p ${PASSWORD} docker.io"
  } 
   }
  }
-  
+  stage('Tag and Push Docker Image'){
+        sh 'docker push suresh123456/image8:5'
+         }
 }
