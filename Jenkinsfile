@@ -19,10 +19,9 @@ node {
   sh 'docker build -t suresh123456/image8:3 .'      
     
   }
-  stage('Upload image to Gitlab reg'){
-        withCredentials([[$class: 'StringBinding', credentialsId: 'jenkins-docker1', variable: 'myemail123']]) {
-             sh 'docker login -u suresh123456 -p ${password} https://cloud.docker.com/'
-        }  
-      }  
-  
+ stage('Login'){
+  withCredentials([usernamePassword( credentialsId: 'jenkins-docker1', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+
+docker.withRegistry('', 'jenkins-docker1') {
+sh "docker login -u ${USERNAME} -p ${PASSWORD}"
  } 
