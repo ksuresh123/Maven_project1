@@ -16,7 +16,7 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t image6:${BUILD_NUMBER} .'      
+  sh 'docker build -t image8 .'      
     
   }
   stage('Login'){
@@ -28,8 +28,8 @@ docker.withRegistry('', 'jenkins-docker1') {
   }
   }
   stage('Pushing'){
-    sh 'docker tag image6:${BUILD_NUMBER} suresh123456/image6:${BUILD_NUMBER}'
-   sh 'docker push docker.io/suresh123456/image6:${BUILD_NUMBER}' 
+    sh 'docker tag image8 suresh123456/image8'
+   sh 'docker push suresh123456/image8' 
     
   }
   
