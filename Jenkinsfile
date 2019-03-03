@@ -23,7 +23,10 @@ node {
   withCredentials([usernamePassword( credentialsId: 'jenkins-docker1', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 
 docker.withRegistry('', 'jenkins-docker1') {
-sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+sh "docker login -u ${USERNAME} -p ${PASSWORD" 
+}
+  }
+  }
 
   
  } 
