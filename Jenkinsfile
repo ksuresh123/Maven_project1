@@ -16,7 +16,7 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t image8 .'      
+  sh 'docker build -t suresh123456/image8:1 .'      
     
   }
   stage('Login'){
@@ -28,8 +28,8 @@ docker.withRegistry('', 'jenkins-docker1') {
   }
   }
   stage('Pushing'){
-    sh 'docker tag image8 suresh123456/image8'
-   sh 'docker push suresh123456/image8' 
+  //  sh 'docker tag image8 suresh123456/image8'
+   sh 'docker push suresh123456/image8:1' 
     
   }
   
