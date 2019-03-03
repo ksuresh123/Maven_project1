@@ -6,7 +6,7 @@ node {
   stage('SCM clone'){
   git url: 'https://github.com/ksuresh123/Maven_project1.git'
                     }
-  stage('Copying'){
+  stage('Build'){
   dir('/var/lib/jenkins/workspace/project2') {
   sh 'java -version'
   
@@ -15,4 +15,9 @@ node {
 
  }
 }
+  stage('Docker image'){
+  sh 'docker build -t image3 .'      
+    
+  }
+  
 } 
