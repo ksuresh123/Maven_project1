@@ -1,12 +1,8 @@
-//node(Linux_Slave) {
-//#git url: 'https://github.com/myneworg/Jenkins_Maven_Pipeline.git'
-//echo "Linux_Slave"
-
 node {
-stage 'Create directory' 
-sh "mkdir output3"
-
+stage 'checkout'
 git url: 'https://github.com/ksuresh123/Maven_project1.git'
+
+stage 'build'
+def mvnhome = tool 'M3'
+sh "${mvnhome}/bin/mvn clean package"
 }
-
-
