@@ -29,7 +29,7 @@ docker.withRegistry('', 'jenkins-docker1') {
   }
   stage('Pushing'){
     sh 'docker tag image6:${BUILD_NUMBER} suresh123456/image6:${BUILD_NUMBER}'
-   sh 'docker push suresh123456/image6:${BUILD_NUMBER}' 
+   sh 'docker push docker.io/suresh123456/image6:${BUILD_NUMBER}' 
     
   }
   
