@@ -16,21 +16,17 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t suresh123456/image8:1 .'      
+  sh 'docker build -t suresh123456/image8:2 .'      
     
   }
-  stage('Login'){
-  withCredentials([usernamePassword( credentialsId: 'jenkins-docker1', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-
-docker.withRegistry('', 'jenkins-docker1') {
-  sh "docker login -u ${USERNAME} -p ${PASSWORD}" 
-}
-  }
-  }
-  stage('Pushing'){
-  //  sh 'docker tag image8 suresh123456/image8'
-   sh 'docker push suresh123456/image8:1' 
-    
-  }
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', jenkins-docker1, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+			usr = suresh123456
+			pswd = myemail123
+		}
+		docker.withRegistry("https://cloud.docker.com/", jenkins-docker1) {
+			sh "docker login -u ${usr} -p ${pswd} https://cloud.docker.com/"
+			def	image = docker.build("suresh123456/image8:2")
+			image.push 'latest'
+		}
   
  } 
