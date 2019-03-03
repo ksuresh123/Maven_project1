@@ -1,7 +1,7 @@
 node {
-  env.JAVA_HOME=" /usr/lib/jvm/java-8-oracle/jre "
+  env.JAVA_HOME=" /usr/lib/jvm/java-8-oracle/"
   env.M2_HOME="/usr/share/maven"
-	env.PATH="${env.JAVA_HOME}/bin:${env.M2_HOME}/bin:${env.PATH}"
+	env.PATH="${env.JAVA_HOME}:${env.M2_HOME}/bin:${env.PATH}"
 
   stage('SCM clone'){
   git url: 'https://github.com/ksuresh123/Maven_project1.git'
