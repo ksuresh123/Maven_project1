@@ -7,7 +7,7 @@ node {
   git url: 'https://github.com/ksuresh123/Maven_project1.git'
                     }
   stage('Copying'){
-  dir('/var/lib/jenkins/workspace/project2') {
+  dir('/var/lib/jenkins/workspace/project1') {
   sh 'java -version'
   
   sh 'mvn --version'
