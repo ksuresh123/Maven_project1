@@ -19,5 +19,9 @@ node {
   sh 'docker build -t image3 .'      
     
   }
-  
+ stage('Login'){
+        withCredentials([[$class: 'StringBinding', credentialsId: 'jenkins-docker1', variable: 'myemail123']]) {
+             sh 'docker login -u suresh123456 -p ${password}'
+        }  
+      }  
 } 
