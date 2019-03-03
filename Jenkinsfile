@@ -1,5 +1,5 @@
 node {
-  env.JAVA_HOME=" /usr/lib/jvm/java-8-oracle/ "
+  env.JAVA_HOME=" /usr/lib/jvm/java-8-oracle/jre "
   env.M2_HOME="/usr/share/maven"
 	env.PATH="${env.JAVA_HOME}/bin:${env.M2_HOME}/bin:${env.PATH}"
 
