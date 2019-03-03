@@ -20,7 +20,7 @@ node {
     
   }
   stage('Upload image to Gitlab reg'){
-        withCredentials([[$class: 'StringBinding', credentialsId: 'jenkins-docker1', variable: 'password']]) {
+        withCredentials([[$class: 'StringBinding', credentialsId: 'jenkins-docker1', variable: 'myemail123']]) {
              sh 'docker login -u suresh123456 -p ${password} https://cloud.docker.com/'
         }  
       }  
