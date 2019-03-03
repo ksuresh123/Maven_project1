@@ -16,17 +16,13 @@ node {
  }
 }
   stage('Docker image'){
-  sh 'docker build -t suresh123456/image8:2 .'      
+  sh 'docker build -t suresh123456/image8:3 .'      
     
   }
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', jenkins-docker1, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-			usr = suresh123456
-			pswd = myemail123
-		}
-		docker.withRegistry("https://cloud.docker.com/", jenkins-docker1) {
-			sh "docker login -u ${usr} -p ${pswd} https://cloud.docker.com/"
-			def	image = docker.build("suresh123456/image8:2")
-			image.push 'latest'
-		}
+  stage('Upload image to Gitlab reg'){
+        withCredentials([[$class: 'StringBinding', credentialsId: 'jenkins-docker1', variable: 'password']]) {
+             sh 'docker login -u suresh123456 -p ${password} https://cloud.docker.com/'
+        }  
+      }  
   
  } 
