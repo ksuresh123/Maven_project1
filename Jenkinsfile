@@ -11,7 +11,7 @@ node {
   sh 'java -version'
 
   sh 'mvn --version'
-  sh 'mvn clean install1'
+  sh 'mvn clean install'
 
  }
 
