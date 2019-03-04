@@ -14,7 +14,7 @@ node {
   sh 'mvn clean install1'
 
  }
-}
+
   
  stage('Ok') {
             steps {
@@ -27,4 +27,5 @@ node {
         emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
     }
 }
+  }
 }
