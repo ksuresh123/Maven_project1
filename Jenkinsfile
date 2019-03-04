@@ -13,7 +13,7 @@ node {
   sh 'mvn --version'
   sh 'mvn clean install'
 
- }
+ 
 
   
  stage('Ok') {
@@ -27,5 +27,6 @@ node {
         emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
     }
 }
+  }
   }
 }
